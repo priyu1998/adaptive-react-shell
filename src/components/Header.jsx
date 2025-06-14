@@ -1,7 +1,7 @@
 
 import { Link, NavLink } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Search, Menu } from "lucide-react";
+import { Menu } from "lucide-react";
 import React from "react";
 import LocationPicker from "./LocationPicker";
 
@@ -14,7 +14,6 @@ const navItems = [
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = React.useState(false);
-  const [search, setSearch] = React.useState("");
 
   return (
     <header className="w-full bg-white shadow-sm sticky top-0 z-40">
@@ -24,7 +23,7 @@ export default function Header() {
           HealthCheck
         </Link>
         
-        {/* Nav + Search - desktop */}
+        {/* Nav - desktop only */}
         <nav className="hidden lg:flex items-center gap-4 flex-1 ml-8">
           {navItems.map((item) => (
             <NavLink
@@ -38,24 +37,9 @@ export default function Header() {
               {item.name}
             </NavLink>
           ))}
-          
-          {/* Integrated Search Bar */}
-          <div className="flex-1 max-w-md mx-4">
-            <div className="flex items-center px-3 py-2 rounded-lg bg-muted focus-within:ring-2 focus-within:ring-[#1A94E5] transition">
-              <Search className="text-muted-foreground mr-2 flex-shrink-0" size={16} />
-              <input
-                className="flex-1 bg-transparent outline-none border-none text-sm"
-                type="search"
-                placeholder="Search"
-                value={search}
-                onChange={e => setSearch(e.target.value)}
-                aria-label="Search for tests, packages or labs"
-              />
-            </div>
-          </div>
         </nav>
         
-        {/* Right section - desktop */}
+        {/* Right section - desktop only */}
         <div className="hidden lg:flex items-center gap-3">
           <Button variant="outline" className="px-4 h-9 text-sm">
             For Labs
@@ -81,13 +65,23 @@ export default function Header() {
           {/* Mobile Search */}
           <div className="mb-4">
             <div className="flex items-center px-3 py-2 rounded-lg bg-muted">
-              <Search className="text-muted-foreground mr-2 flex-shrink-0" size={16} />
+              {/* Search input for mobile only */}
+              <svg
+                className="text-muted-foreground mr-2 flex-shrink-0"
+                width={16}
+                height={16}
+                stroke="currentColor"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <circle cx={11} cy={11} r={8} />
+                <line x1={21} y1={21} x2={16.65} y2={16.65} />
+              </svg>
               <input
                 className="flex-1 bg-transparent outline-none border-none text-sm"
                 type="search"
                 placeholder="Search"
-                value={search}
-                onChange={e => setSearch(e.target.value)}
+                aria-label="Search for tests, packages or labs"
               />
             </div>
           </div>

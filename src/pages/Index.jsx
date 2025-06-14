@@ -73,19 +73,58 @@ function Chip({ text, selected, onClick }) {
 }
 
 export default function Index() {
+  const [search, setSearch] = React.useState("");
+  const [selectedFilter, setSelectedFilter] = React.useState("");
+
   return (
     <div className="bg-background min-h-screen flex flex-col">
       <Header />
       <main className="flex-1">
-        {/* Hero section with filter chips */}
-        <div className="bg-muted/30 py-4 sm:py-6 md:py-8">
+        {/* Main Hero + Search - centered and responsive */}
+        <div className="bg-muted/30 pt-6 pb-0 sm:pt-8 sm:pb-0 md:pt-12 md:pb-0">
           <Container>
-            <div className="flex flex-wrap gap-2 sm:gap-3 justify-center">
+            {/* Centered Search bar */}
+            <form
+              className="w-full max-w-3xl mx-auto flex flex-col items-center px-2"
+              onSubmit={e => e.preventDefault()}
+            >
+              <div className="flex items-center w-full px-2 sm:px-4 py-2 sm:py-3 rounded-lg bg-white shadow-sm border border-muted focus-within:ring-2 focus-within:ring-[#1A94E5] transition mb-4 sm:mb-6">
+                <svg
+                  className="text-muted-foreground mr-2 flex-shrink-0"
+                  width={20}
+                  height={20}
+                  stroke="currentColor"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <circle cx={11} cy={11} r={8} />
+                  <line x1={21} y1={21} x2={16.65} y2={16.65} />
+                </svg>
+                <input
+                  className="flex-1 bg-transparent outline-none border-none text-sm sm:text-base"
+                  type="search"
+                  placeholder="Search for tests, packages or labs"
+                  value={search}
+                  onChange={e => setSearch(e.target.value)}
+                  aria-label="Search for tests, packages or labs"
+                />
+              </div>
+            </form>
+            {/* Chips below search */}
+            <div className="flex flex-wrap gap-2 sm:gap-3 justify-center mb-2 sm:mb-4">
               {["Blood Tests", "Imaging", "Packages", "All Tests"].map(filter => (
                 <button
                   key={filter}
-                  className="rounded-full px-3 sm:px-4 py-1.5 text-xs sm:text-sm font-medium border bg-white hover:bg-[#1A94E5] hover:text-white hover:border-[#1A94E5] transition-colors"
+                  className={
+                    "rounded-full px-3 sm:px-4 py-1.5 text-xs sm:text-sm font-medium border bg-white hover:bg-[#1A94E5] hover:text-white hover:border-[#1A94E5] transition-colors"
+                  }
                   type="button"
+                  onClick={() => setSelectedFilter(filter)}
+                  style={{
+                    ...(selectedFilter === filter
+                      ? { backgroundColor: "#1A94E5", color: "#fff", borderColor: "#1A94E5" }
+                      : {})
+                  }}
                 >
                   {filter}
                 </button>
