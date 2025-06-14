@@ -28,7 +28,7 @@ export default function SearchBarWithFilters({ search, setSearch, selectedFilter
       className="flex flex-col items-center my-8"
       onSubmit={e => { e.preventDefault(); }}
     >
-      <div className="w-full max-w-5xl mx-auto px-4">
+      <div className="w-full max-w-sm sm:max-w-md md:max-w-2xl lg:max-w-4xl mx-auto px-4">
         <div className="flex items-center px-5 py-3 rounded-xl bg-[#f4f6f8] focus-within:ring-2 focus-within:ring-[#1A94E5] shadow-sm transition relative">
           <Search className="text-muted-foreground mr-2" size={22} />
           <input
