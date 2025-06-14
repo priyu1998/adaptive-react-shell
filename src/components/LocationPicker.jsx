@@ -51,12 +51,13 @@ export default function LocationPicker({ className }) {
           <span className="pl-1 text-xs text-muted-foreground">&#x25BE;</span>
         </button>
       </PopoverTrigger>
-      {/* Always open popover below the trigger, centered */}
-      <PopoverContent 
+      {/* Always open popover below the trigger, centered; never flip/collide */}
+      <PopoverContent
         className="w-64 p-3"
         align="center"
         side="bottom"
         sideOffset={8}
+        avoidCollisions={false}
         style={{ zIndex: 1000 }}
       >
         <div>
