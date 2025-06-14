@@ -7,6 +7,7 @@ import {
   PopoverContent,
 } from "@/components/ui/popover";
 
+// List of cities; can be replaced with a database in production.
 const cities = [
   "New York",
   "Los Angeles",
@@ -50,12 +51,12 @@ export default function LocationPicker({ className }) {
           <span className="pl-1 text-xs text-muted-foreground">&#x25BE;</span>
         </button>
       </PopoverTrigger>
-      {/* Force downward appearance for popover with align center and side bottom */}
+      {/* Always open popover below the trigger, centered */}
       <PopoverContent 
         className="w-64 p-3"
         align="center"
         side="bottom"
-        sideOffset={6}
+        sideOffset={8}
         style={{ zIndex: 1000 }}
       >
         <div>
