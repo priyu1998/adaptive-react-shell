@@ -28,20 +28,22 @@ export default function SearchBarWithFilters({ search, setSearch, selectedFilter
       className="flex flex-col items-center my-8"
       onSubmit={e => { e.preventDefault(); }}
     >
-      <div className="w-[90%] sm:w-4/5 lg:w-2/3 mx-auto">
-        <div className="flex items-center px-5 py-3 rounded-xl bg-[#f4f6f8] focus-within:ring-2 focus-within:ring-[#1A94E5] shadow-sm transition relative">
-          <Search className="text-muted-foreground mr-2" size={22} />
+      <div className="w-[95%] sm:w-4/5 lg:w-4/5 mx-auto">
+        {/* Modern search container */}
+        <div className="flex items-center px-6 py-4 rounded-2xl bg-white border border-[#e3e8ef] focus-within:ring-2 focus-within:ring-[#1A94E5] shadow-lg transition relative mb-2">
+          <Search className="text-muted-foreground mr-3" size={26} />
           <input
-            className="flex-1 bg-transparent outline-none border-none text-base"
+            className="flex-1 bg-transparent outline-none border-none text-base sm:text-lg placeholder:text-[#b1b6be] px-2"
             type="search"
-            placeholder="Search"
+            placeholder="Search for tests, packages or labs"
             value={search}
             onChange={e => setSearch(e.target.value)}
             aria-label="Search for tests, packages or labs"
+            style={{ minHeight: 40 }}
           />
         </div>
 
-        <div className="flex flex-wrap gap-3 mt-4">
+        <div className="flex flex-wrap gap-3 mt-5 justify-center">
           {filterChips.map(c => (
             <Chip
               key={c}
