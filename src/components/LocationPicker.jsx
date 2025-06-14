@@ -6,6 +6,7 @@ import {
   PopoverTrigger,
   PopoverContent,
 } from "@/components/ui/popover";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 // List of cities; can be replaced with a database in production.
 const cities = [
@@ -53,12 +54,12 @@ export default function LocationPicker({ className }) {
       </PopoverTrigger>
       {/* Always open popover below the trigger, centered; never flip/collide */}
       <PopoverContent
-        className="w-64 p-3"
+        className="p-3 w-64 max-w-[95vw] sm:w-64 sm:max-w-xs"
         align="center"
         side="bottom"
         sideOffset={8}
         avoidCollisions={false}
-        style={{ zIndex: 1000 }}
+        style={{ zIndex: 1000, maxHeight: '60vh', overflow: 'visible' }}
       >
         <div>
           <input
@@ -69,7 +70,7 @@ export default function LocationPicker({ className }) {
             className="w-full mb-2 px-3 py-2 rounded border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary transition"
             autoFocus
           />
-          <div className="max-h-40 overflow-auto">
+          <ScrollArea className="max-h-48 sm:max-h-40 w-full">
             {filteredCities.length === 0 ? (
               <div className="text-xs text-muted-foreground text-center py-2">
                 No results found
@@ -86,9 +87,10 @@ export default function LocationPicker({ className }) {
                 </button>
               ))
             )}
-          </div>
+          </ScrollArea>
         </div>
       </PopoverContent>
     </Popover>
   );
 }
+
