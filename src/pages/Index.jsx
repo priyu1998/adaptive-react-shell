@@ -1,4 +1,3 @@
-
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import TestCard from "@/components/TestCard";
@@ -97,63 +96,67 @@ export default function Index() {
 
         <Container>
           {/* Top Featured Tests */}
-          <div className="py-4 sm:py-6">
-            <div className="flex justify-between items-center mb-3 sm:mb-4">
+          <section className="py-6 sm:py-8 md:py-12">
+            <div className="flex justify-between items-center mb-4 sm:mb-6">
               <h2 className="text-lg sm:text-xl md:text-2xl font-bold">Top Tests & Packages</h2>
             </div>
-            <div className="flex gap-3 sm:gap-4 overflow-x-auto pb-2 scrollbar-hide">
+            <div className="flex gap-4 sm:gap-6 overflow-x-auto pb-2 scrollbar-hide px-1 sm:px-0">
               {topTests.map((test) => (
                 <TestCard
                   key={test.title}
                   imgSrc={test.imgSrc}
                   title={test.title}
                   desc={test.desc}
-                  className="flex-shrink-0 w-64 sm:w-72"
+                  className="flex-shrink-0 w-60 sm:w-72 md:w-80"
                 />
               ))}
             </div>
-          </div>
+          </section>
 
           {/* Popular Tests */}
-          <div className="py-4 sm:py-6">
-            <div className="flex justify-between items-center mb-3 sm:mb-4">
+          <section className="py-6 sm:py-8 md:py-12">
+            <div className="flex justify-between items-center mb-4 sm:mb-6">
               <h2 className="text-lg sm:text-xl md:text-2xl font-bold">Popular Tests</h2>
             </div>
-            <div className="flex gap-3 sm:gap-4 overflow-x-auto pb-2 scrollbar-hide">
+            <div className="flex gap-4 sm:gap-6 overflow-x-auto pb-2 scrollbar-hide px-1 sm:px-0">
               {popularTests.map((test) => (
                 <TestCard
                   key={test.title}
                   imgSrc={test.imgSrc}
                   title={test.title}
                   desc={test.desc}
-                  className="flex-shrink-0 w-64 sm:w-72"
+                  className="flex-shrink-0 w-60 sm:w-72 md:w-80"
                 />
               ))}
             </div>
-          </div>
+          </section>
 
           {/* Tests by City */}
-          <div className="py-3 sm:py-4">
-            <h3 className="text-base sm:text-lg md:text-xl font-semibold mb-2 sm:mb-3">Tests by City</h3>
+          <section className="py-4 sm:py-5 md:py-8">
+            <h3 className="text-base sm:text-lg md:text-xl font-semibold mb-3 sm:mb-4">
+              Tests by City
+            </h3>
             <div className="flex flex-wrap gap-2 sm:gap-3">
               {cityChips.map(c => (
                 <Chip key={c} text={c} />
               ))}
             </div>
-          </div>
+          </section>
 
           {/* Tests by Category */}
-          <div className="py-3 sm:py-4">
-            <h3 className="text-base sm:text-lg md:text-xl font-semibold mb-2 sm:mb-3">Tests by Category</h3>
+          <section className="py-4 sm:py-5 md:py-8">
+            <h3 className="text-base sm:text-lg md:text-xl font-semibold mb-3 sm:mb-4">
+              Tests by Category
+            </h3>
             <div className="flex flex-wrap gap-2 sm:gap-3">
               {categoryChips.map(c => (
                 <Chip key={c} text={c} />
               ))}
             </div>
-          </div>
+          </section>
 
           {/* Partner Section */}
-          <div className="w-full py-8 sm:py-12 flex flex-col items-center justify-center text-center">
+          <section className="w-full py-8 sm:py-12 flex flex-col items-center justify-center text-center">
             <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2 sm:mb-3">
               Partner with HealthCheck
             </h2>
@@ -163,10 +166,10 @@ export default function Index() {
             <Button className="px-6 sm:px-8 py-2 sm:py-3 text-sm sm:text-base font-semibold">
               Become a Partner
             </Button>
-          </div>
+          </section>
           
           {/* Help Center Section */}
-          <div className="w-full py-8 sm:py-12 flex flex-col items-center justify-center text-center">
+          <section className="w-full py-8 sm:py-12 flex flex-col items-center justify-center text-center">
             <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2 sm:mb-3">
               Learn More About Health Tests
             </h2>
@@ -176,7 +179,7 @@ export default function Index() {
             <Button variant="outline" className="px-6 sm:px-8 py-2 sm:py-3 text-sm sm:text-base font-semibold">
               Visit Our Help Center
             </Button>
-          </div>
+          </section>
         </Container>
       </main>
       <Footer />
