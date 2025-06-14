@@ -60,14 +60,14 @@ function Chip({ text, selected, onClick }) {
   return (
     <button
       className={
-        "rounded-full px-4 py-1 text-sm font-medium border transition-colors " +
+        "rounded-full px-2 sm:px-3 md:px-4 py-1 text-xs sm:text-sm font-medium border transition-colors " +
         (selected
           ? "bg-[#1A94E5] text-white border-[#1A94E5]"
           : "bg-muted text-foreground border-transparent hover:border-muted-foreground hover:bg-muted/80")
       }
       onClick={onClick}
       type="button"
-      style={{ minWidth: 96, marginBottom: 4 }}
+      style={{ minWidth: 70, marginBottom: 4 }}
     >
       {text}
     </button>
@@ -93,9 +93,9 @@ export default function Index() {
           {/* Top Featured Tests */}
           <div>
             <div className="flex justify-between items-center mb-2 mt-2">
-              <h2 className="text-xl md:text-2xl font-bold">Top Tests & Packages</h2>
+              <h2 className="text-lg sm:text-xl md:text-2xl font-bold">Top Tests & Packages</h2>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mb-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4 md:gap-6 mb-8 sm:mb-10">
               {topTests.map((test) => (
                 <TestCard
                   key={test.title}
@@ -109,10 +109,10 @@ export default function Index() {
 
           {/* Popular Tests */}
           <div>
-            <div className="flex justify-between items-center mb-2 mt-8">
-              <h2 className="text-xl md:text-2xl font-bold">Popular Tests</h2>
+            <div className="flex justify-between items-center mb-2 mt-6 sm:mt-8">
+              <h2 className="text-lg sm:text-xl md:text-2xl font-bold">Popular Tests</h2>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mb-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4 md:gap-6 mb-8 sm:mb-10">
               {popularTests.map((test) => (
                 <TestCard
                   key={test.title}
@@ -126,8 +126,8 @@ export default function Index() {
 
           {/* Tests by City */}
           <div className="mt-4 mb-2">
-            <h3 className="text-lg md:text-xl font-semibold mb-2">Tests by City</h3>
-            <div className="flex flex-wrap gap-2">
+            <h3 className="text-base sm:text-lg md:text-xl font-semibold mb-2">Tests by City</h3>
+            <div className="flex flex-wrap gap-1 sm:gap-2">
               {cityChips.map(c => (
                 <Chip key={c} text={c} />
               ))}
@@ -135,9 +135,9 @@ export default function Index() {
           </div>
 
           {/* Tests by Category */}
-          <div className="mt-6 mb-10">
-            <h3 className="text-lg md:text-xl font-semibold mb-2">Tests by Category</h3>
-            <div className="flex flex-wrap gap-2">
+          <div className="mt-4 sm:mt-6 mb-8 sm:mb-10">
+            <h3 className="text-base sm:text-lg md:text-xl font-semibold mb-2">Tests by Category</h3>
+            <div className="flex flex-wrap gap-1 sm:gap-2">
               {categoryChips.map(c => (
                 <Chip key={c} text={c} />
               ))}
@@ -145,27 +145,27 @@ export default function Index() {
           </div>
 
           {/* Partner Section */}
-          <div className="w-full mt-14 flex flex-col items-center justify-center text-center py-10">
-            <h2 className="text-2xl md:text-3xl font-bold mb-2">
+          <div className="w-full mt-10 sm:mt-14 flex flex-col items-center justify-center text-center py-8 sm:py-10">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2">
               Partner with HealthCheck
             </h2>
-            <p className="text-muted-foreground mb-4 max-w-xl">
+            <p className="text-muted-foreground mb-4 max-w-xl text-sm sm:text-base px-4">
               Expand your reach and grow your business by partnering with us.
             </p>
-            <Button className="px-8 py-2 text-base font-semibold">
+            <Button className="px-6 sm:px-8 py-2 text-sm sm:text-base font-semibold">
               Become a Partner
             </Button>
           </div>
           
           {/* Help Center Section */}
-          <div className="w-full mt-6 flex flex-col items-center justify-center text-center py-10">
-            <h2 className="text-2xl md:text-3xl font-bold mb-2">
+          <div className="w-full mt-4 sm:mt-6 flex flex-col items-center justify-center text-center py-8 sm:py-10">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2">
               Learn More About Health Tests
             </h2>
-            <p className="text-muted-foreground mb-4 max-w-xl">
+            <p className="text-muted-foreground mb-4 max-w-xl text-sm sm:text-base px-4">
               Find answers to common questions about health tests and procedures.
             </p>
-            <Button variant="outline" className="px-8 py-2 text-base font-semibold">
+            <Button variant="outline" className="px-6 sm:px-8 py-2 text-sm sm:text-base font-semibold">
               Visit Our Help Center
             </Button>
           </div>
