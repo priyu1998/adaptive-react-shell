@@ -20,7 +20,7 @@ export default function Header() {
       <div className="mx-auto max-w-[1400px] flex items-center justify-between px-6 lg:px-10 py-4">
         {/* Logo */}
         <Link to="/" className="text-2xl font-bold tracking-tight text-black">
-          HealthCheck
+          HealthKaro
         </Link>
         {/* Nav + LocationSelect - desktop */}
         <nav className="hidden lg:flex items-center gap-3 flex-1 ml-10">

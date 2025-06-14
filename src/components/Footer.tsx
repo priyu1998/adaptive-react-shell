@@ -2,10 +2,10 @@
 import { Link } from "react-router-dom";
 
 const footerLinks = [
-  { name: "About Us", path: "#" },
-  { name: "Contact", path: "#" },
-  { name: "Privacy Policy", path: "#" },
-  { name: "Terms of Service", path: "#" },
+  { name: "About Us", path: "/about" },
+  { name: "Contact", path: "/contact" },
+  { name: "Privacy Policy", path: "/privacy-policy" },
+  { name: "Terms of Service", path: "/terms-and-conditions" },
 ];
 
 export default function Footer() {
@@ -20,7 +20,7 @@ export default function Footer() {
           ))}
         </div>
         <div className="mt-2 md:mt-0 text-center text-sm text-muted-foreground font-medium">
-          ©2024 HealthCheck. All rights reserved.
+          ©2025 HealthKaro. All rights reserved.
         </div>
       </div>
     </footer>

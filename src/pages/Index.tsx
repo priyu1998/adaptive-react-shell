@@ -72,7 +72,7 @@ const Chip = ({ text, selected, onClick }: { text: string, selected?: boolean, o
 export default function Index() {
   return (
     <div className="bg-background min-h-screen flex flex-col">
-      <Header />
+      {/* <Header /> */}
 
       {/* Main Content */}
       <main className="flex-1 mx-auto w-full max-w-[1300px] px-4 lg:px-0 pt-6">
@@ -91,7 +91,7 @@ export default function Index() {
         </div>
 
         {/* Top Featured Tests */}
-        <div>
+        <div style={{paddingLeft:"20px", paddingRight:"20px"}}>
           <div className="flex justify-between items-center mb-2 mt-2">
             <h2 className="text-xl md:text-2xl font-bold">Top Tests & Packages</h2>
           </div>
@@ -108,7 +108,7 @@ export default function Index() {
         </div>
 
         {/* Popular Tests */}
-        <div>
+        <div style={{paddingLeft:"20px", paddingRight:"20px"}}>
           <div className="flex justify-between items-center mb-2 mt-8">
             <h2 className="text-xl md:text-2xl font-bold">Popular Tests</h2>
           </div>
@@ -125,7 +125,7 @@ export default function Index() {
         </div>
 
         {/* Tests by City */}
-        <div className="mt-4 mb-2">
+        <div style={{paddingLeft:"20px", paddingRight:"20px"}} className="mt-4 mb-2">
           <h3 className="text-lg md:text-xl font-semibold mb-2">Tests by City</h3>
           <div className="flex flex-wrap gap-2">
             {cityChips.map(c => (
@@ -135,7 +135,7 @@ export default function Index() {
         </div>
 
         {/* Tests by Category */}
-        <div className="mt-6 mb-10">
+        <div style={{paddingLeft:"10px", paddingRight:"10px"}} className="mt-6 mb-10">
           <h3 className="text-lg md:text-xl font-semibold mb-2">Tests by Category</h3>
           <div className="flex flex-wrap gap-2">
             {categoryChips.map(c => (
@@ -147,7 +147,7 @@ export default function Index() {
         {/* Partner Section */}
         <div className="w-full mt-14 flex flex-col items-center justify-center text-center py-10">
           <h2 className="text-2xl md:text-3xl font-bold mb-2">
-            Partner with HealthCheck
+            Partner with HealthKaro
           </h2>
           <p className="text-muted-foreground mb-4 max-w-xl">
             Expand your reach and grow your business by partnering with us.
@@ -170,7 +170,7 @@ export default function Index() {
           </Button>
         </div>
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
