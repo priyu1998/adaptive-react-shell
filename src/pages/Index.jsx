@@ -54,7 +54,7 @@ const cityChips = ["New York", "Los Angeles", "Chicago", "Houston", "Phoenix", "
 const categoryChips = ["Cardiology", "Neurology", "Oncology", "Pediatrics", "Orthopedics", "Gastroenterology"];
 const filterChips = ["Blood Tests", "Imaging", "Packages", "All Tests"];
 
-const Chip = ({ text, selected, onClick }: { text: string, selected?: boolean, onClick?: () => void }) => (
+const Chip = ({ text, selected, onClick }) => (
   <button
     className={
       "rounded-full px-4 py-1 text-sm font-medium border transition-colors " +
@@ -75,21 +75,7 @@ export default function Index() {
       <Header />
 
       {/* Main Content */}
-      <main className="flex-1 mx-auto w-full max-w-[1300px] px-4 lg:px-0 pt-6">
-        {/* Search bar and filter chips */}
-        <div className="w-full rounded-xl bg-muted mb-6 px-4 py-5 flex flex-col gap-4">
-          <input
-            type="text"
-            placeholder="Search for tests, labs, or packages"
-            className="w-full md:w-2/3 mx-auto px-5 py-3 text-base rounded-lg border border-input bg-white focus:outline-none focus:ring-2 focus:ring-primary transition"
-          />
-          <div className="flex flex-wrap gap-2 justify-center">
-            {filterChips.map(chip => (
-              <Chip key={chip} text={chip} />
-            ))}
-          </div>
-        </div>
-
+      <main className="flex-1 mx-auto w-full max-w-[1300px] px-4 md:px-8 lg:px-12 pt-6">
         {/* Top Featured Tests */}
         <div>
           <div className="flex justify-between items-center mb-2 mt-2">

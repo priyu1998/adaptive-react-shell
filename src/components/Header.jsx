@@ -1,9 +1,9 @@
 
 import { Link, NavLink } from "react-router-dom";
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
 import React from "react";
+import LocationPicker from "./LocationPicker";
 
 const navItems = [
   { name: "Tests", path: "#" },
@@ -17,12 +17,12 @@ export default function Header() {
 
   return (
     <header className="w-full bg-white shadow-sm sticky top-0 z-40">
-      <div className="mx-auto max-w-[1400px] flex items-center justify-between px-6 lg:px-10 py-4">
+      <div className="mx-auto max-w-[1400px] flex items-center justify-between px-4 md:px-8 lg:px-12 py-4">
         {/* Logo */}
         <Link to="/" className="text-2xl font-bold tracking-tight text-black">
           HealthCheck
         </Link>
-        {/* Nav + Search - desktop */}
+        {/* Nav + Location - desktop */}
         <nav className="hidden lg:flex items-center gap-3 flex-1 ml-10">
           {navItems.map((item) => (
             <NavLink
@@ -38,19 +38,7 @@ export default function Header() {
           ))}
           {/* Spacer */}
           <div className="flex-1" />
-          <div className="relative w-64">
-            <Input
-              type="text"
-              placeholder="Search"
-              className="pl-10 pr-6 py-2 rounded-lg bg-muted"
-            />
-            <span className="absolute left-3 top-2 text-muted-foreground">
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                <circle cx="9" cy="9" r="7" stroke="#999" strokeWidth="2"/>
-                <line x1="15.0166" y1="15.4853" x2="18" y2="18" stroke="#999" strokeWidth="2" strokeLinecap="round"/>
-              </svg>
-            </span>
-          </div>
+          <LocationPicker className="relative" />
         </nav>
         {/* Right CTA Buttons - desktop */}
         <div className="hidden lg:flex items-center gap-3 ml-6">
@@ -72,7 +60,7 @@ export default function Header() {
       </div>
       {/* Mobile menu drawer */}
       {mobileOpen && (
-        <div className="lg:hidden px-6 pb-4">
+        <div className="lg:hidden px-4 md:px-8 pb-4">
           <nav className="space-y-2">
             {navItems.map((item) => (
               <NavLink
@@ -92,18 +80,8 @@ export default function Header() {
                 Book a Test
               </Button>
             </div>
-            <div className="mt-2">
-              <Input
-                type="text"
-                placeholder="Search"
-                className="w-full bg-muted pl-10"
-              />
-              <span className="absolute left-8 top-[78px] text-muted-foreground pointer-events-none">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                  <circle cx="9" cy="9" r="7" stroke="#999" strokeWidth="2"/>
-                  <line x1="15.0166" y1="15.4853" x2="18" y2="18" stroke="#999" strokeWidth="2" strokeLinecap="round"/>
-                </svg>
-              </span>
+            <div className="mt-2 flex justify-center">
+              <LocationPicker />
             </div>
           </nav>
         </div>

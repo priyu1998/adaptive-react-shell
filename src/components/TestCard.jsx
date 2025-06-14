@@ -1,14 +1,7 @@
 
 import React from "react";
 
-interface TestCardProps {
-  imgSrc: string;
-  title: string;
-  desc: string;
-  className?: string;
-}
-
-const TestCard: React.FC<TestCardProps> = ({ imgSrc, title, desc, className }) => {
+const TestCard = ({ imgSrc, title, desc, className }) => {
   return (
     <div className={`bg-white rounded-xl shadow group hover:shadow-lg transition-shadow overflow-hidden flex flex-col ${className || ""}`}>
       <img
