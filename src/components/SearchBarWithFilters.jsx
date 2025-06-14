@@ -1,5 +1,6 @@
 
 import React from "react";
+import { Search } from "lucide-react";
 
 const filterChips = ["Blood Tests", "Imaging", "Packages", "All Tests"];
 
@@ -27,29 +28,28 @@ export default function SearchBarWithFilters({ search, setSearch, selectedFilter
       className="flex flex-col items-center my-8"
       onSubmit={e => { e.preventDefault(); }}
     >
-      <div className="w-full flex justify-center">
-        {/* Search bar: centered, max-w-4xl, full width on mobile, big shadow, large rounded */}
-        <div className="w-full max-w-4xl bg-white rounded-2xl shadow-md py-6 px-2 md:px-8 flex flex-col items-center">
+      <div className="w-[90%] sm:w-4/5 lg:w-2/3 mx-auto">
+        <div className="flex items-center px-5 py-3 rounded-xl bg-[#f4f6f8] focus-within:ring-2 focus-within:ring-[#1A94E5] shadow-sm transition relative">
+          <Search className="text-muted-foreground mr-2" size={22} />
           <input
-            className="w-full bg-transparent text-lg md:text-2xl text-muted-foreground rounded-lg px-6 py-5 border-none outline-none transition focus:ring-2 focus:ring-[#1A94E5] mb-6 placeholder:text-muted-foreground"
+            className="flex-1 bg-transparent outline-none border-none text-base"
             type="search"
-            placeholder="Search for tests, labs, or packages"
+            placeholder="Search"
             value={search}
             onChange={e => setSearch(e.target.value)}
             aria-label="Search for tests, packages or labs"
           />
+        </div>
 
-          {/* Filter chips centered beneath the input */}
-          <div className="flex flex-wrap gap-8 justify-center mt-2">
-            {filterChips.map(c => (
-              <Chip
-                key={c}
-                text={c}
-                selected={selectedFilter === c}
-                onClick={() => setSelectedFilter(c)}
-              />
-            ))}
-          </div>
+        <div className="flex flex-wrap gap-3 mt-4">
+          {filterChips.map(c => (
+            <Chip
+              key={c}
+              text={c}
+              selected={selectedFilter === c}
+              onClick={() => setSelectedFilter(c)}
+            />
+          ))}
         </div>
       </div>
     </form>
