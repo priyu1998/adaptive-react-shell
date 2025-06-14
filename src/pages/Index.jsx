@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import TestCard from "@/components/TestCard";
 import { Button } from "@/components/ui/button";
 import React from "react";
+import { Search } from "lucide-react";
 
 const topTests = [
   {
@@ -60,38 +61,57 @@ const Chip = ({ text, selected, onClick }) => (
     className={
       "rounded-full px-4 py-1 text-sm font-medium border transition-colors " +
       (selected
-        ? "bg-primary text-white border-primary"
+        ? "bg-[#1A94E5] text-white border-[#1A94E5]"
         : "bg-muted text-foreground border-transparent hover:border-muted-foreground hover:bg-muted/80")
     }
     onClick={onClick}
     type="button"
+    style={{ minWidth: 96, marginBottom: 4 }}
   >
     {text}
   </button>
 );
 
 export default function Index() {
-  // Optionally you can manage search state here if you connect it elsewhere
   const [search, setSearch] = React.useState("");
+  const [selectedFilter, setSelectedFilter] = React.useState("All Tests");
 
   return (
     <div className="bg-background min-h-screen flex flex-col">
       <Header />
 
       {/* Main Content */}
-      <main className="flex-1 mx-auto w-full max-w-[1300px] px-4 sm:px-8 md:px-16 lg:px-32 pt-6">
+      <main className="flex-1 mx-auto w-full max-w-[1400px] px-2 sm:px-8 md:px-20 lg:px-32 pt-6">
         {/* Centered Search Bar */}
         <form
-          className="flex justify-center items-center my-6"
+          className="flex flex-col items-center my-8"
           onSubmit={e => { e.preventDefault(); }}
         >
-          <input
-            className="w-full max-w-xl px-5 py-3 rounded-full border border-input shadow-sm focus:outline-none focus:ring-2 focus:ring-primary bg-white text-base transition"
-            type="search"
-            placeholder="Search for tests, packages or labs..."
-            value={search}
-            onChange={e => setSearch(e.target.value)}
-          />
+          <div className="w-full max-w-3xl">
+            <div className="flex items-center px-5 py-3 rounded-xl bg-[#f4f6f8] focus-within:ring-2 focus-within:ring-[#1A94E5] shadow-sm transition relative">
+              <Search className="text-muted-foreground mr-2" size={22} />
+              <input
+                className="flex-1 bg-transparent outline-none border-none text-base"
+                type="search"
+                placeholder="Search"
+                value={search}
+                onChange={e => setSearch(e.target.value)}
+                aria-label="Search for tests, packages or labs"
+              />
+            </div>
+
+            {/* Filter tags below searchbar */}
+            <div className="flex flex-wrap gap-3 mt-4">
+              {filterChips.map(c => (
+                <Chip
+                  key={c}
+                  text={c}
+                  selected={selectedFilter === c}
+                  onClick={() => setSelectedFilter(c)}
+                />
+              ))}
+            </div>
+          </div>
         </form>
 
         {/* Top Featured Tests */}
