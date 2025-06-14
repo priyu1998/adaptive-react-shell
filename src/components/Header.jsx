@@ -22,8 +22,8 @@ export default function Header() {
         <Link to="/" className="text-xl sm:text-2xl font-bold tracking-tight text-black">
           HealthCheck
         </Link>
-        
-        {/* Nav - desktop only */}
+
+        {/* Nav - desktop and larger: shown; mobile: hidden */}
         <nav className="hidden lg:flex items-center gap-4 flex-1 ml-8">
           {navItems.map((item) => (
             <NavLink
@@ -38,8 +38,8 @@ export default function Header() {
             </NavLink>
           ))}
         </nav>
-        
-        {/* Right section - desktop only */}
+
+        {/* Actions - desktop and larger: shown; mobile: hidden */}
         <div className="hidden lg:flex items-center gap-3">
           <LocationPicker />
           <Button variant="outline" className="px-4 h-9 text-sm">
@@ -49,8 +49,8 @@ export default function Header() {
             Book a Test
           </Button>
         </div>
-        
-        {/* Mobile menu button (hamburger) */}
+
+        {/* Mobile menu button (hamburger) - only shown on mobile and small screens */}
         <button
           className="lg:hidden p-2 rounded-md hover:bg-accent"
           onClick={() => setMobileOpen(!mobileOpen)}
@@ -59,7 +59,7 @@ export default function Header() {
           <Menu size={24} />
         </button>
       </div>
-      
+
       {/* Mobile menu drawer (only on small screens) */}
       {mobileOpen && (
         <div className="lg:hidden px-4 pb-4 border-t">
