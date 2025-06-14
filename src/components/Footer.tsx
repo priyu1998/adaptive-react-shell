@@ -11,7 +11,7 @@ const footerLinks = [
 export default function Footer() {
   return (
     <footer className="w-full border-t bg-white mt-16">
-      <div className="mx-auto max-w-[1500px] px-4 sm:px-6 md:px-10 lg:px-16 py-6 flex flex-col md:flex-row items-center justify-between">
+      <div className="mx-auto max-w-[1300px] px-6 py-6 flex flex-col md:flex-row items-center justify-between">
         <div className="flex flex-wrap gap-x-8 gap-y-2 justify-center md:justify-start text-sm text-muted-foreground font-medium">
           {footerLinks.map(link => (
             <Link to={link.path} key={link.name} className="hover:underline">
