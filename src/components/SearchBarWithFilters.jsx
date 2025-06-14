@@ -27,12 +27,11 @@ export default function SearchBarWithFilters({ search, setSearch, selectedFilter
       className="flex flex-col items-center my-8"
       onSubmit={e => { e.preventDefault(); }}
     >
-      {/* Outermost container for background, padding, and rounded corners */}
-      <div className="flex justify-center w-full">
-        {/* Make search bar 100vw on mobile, 70% on desktop */}
-        <div className="w-full lg:w-[70%] bg-[#f4f7fb] rounded-2xl py-10 px-2 md:px-8 flex flex-col items-center">
+      <div className="w-full flex justify-center">
+        {/* Search bar: centered, max-w-4xl, full width on mobile, big shadow, large rounded */}
+        <div className="w-full max-w-4xl bg-white rounded-2xl shadow-md py-6 px-2 md:px-8 flex flex-col items-center">
           <input
-            className="w-full bg-white text-lg md:text-xl text-muted-foreground rounded-lg px-6 py-4 border-none outline-none shadow transition focus:ring-2 focus:ring-[#1A94E5] mb-6"
+            className="w-full bg-transparent text-lg md:text-2xl text-muted-foreground rounded-lg px-6 py-5 border-none outline-none transition focus:ring-2 focus:ring-[#1A94E5] mb-6 placeholder:text-muted-foreground"
             type="search"
             placeholder="Search for tests, labs, or packages"
             value={search}
