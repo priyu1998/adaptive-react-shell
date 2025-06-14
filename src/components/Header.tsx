@@ -1,9 +1,9 @@
-
 import { Link, NavLink } from "react-router-dom";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
 import React from "react";
+import LocationSelect from "./LocationSelect";
 
 const navItems = [
   { name: "Tests", path: "#" },
@@ -22,7 +22,7 @@ export default function Header() {
         <Link to="/" className="text-2xl font-bold tracking-tight text-black">
           HealthCheck
         </Link>
-        {/* Nav + Search - desktop */}
+        {/* Nav + LocationSelect - desktop */}
         <nav className="hidden lg:flex items-center gap-3 flex-1 ml-10">
           {navItems.map((item) => (
             <NavLink
@@ -38,18 +38,8 @@ export default function Header() {
           ))}
           {/* Spacer */}
           <div className="flex-1" />
-          <div className="relative w-64">
-            <Input
-              type="text"
-              placeholder="Search"
-              className="pl-10 pr-6 py-2 rounded-lg bg-muted"
-            />
-            <span className="absolute left-3 top-2 text-muted-foreground">
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                <circle cx="9" cy="9" r="7" stroke="#999" strokeWidth="2"/>
-                <line x1="15.0166" y1="15.4853" x2="18" y2="18" stroke="#999" strokeWidth="2" strokeLinecap="round"/>
-              </svg>
-            </span>
+          <div className="relative">
+            <LocationSelect />
           </div>
         </nav>
         {/* Right CTA Buttons - desktop */}
@@ -93,17 +83,8 @@ export default function Header() {
               </Button>
             </div>
             <div className="mt-2">
-              <Input
-                type="text"
-                placeholder="Search"
-                className="w-full bg-muted pl-10"
-              />
-              <span className="absolute left-8 top-[78px] text-muted-foreground pointer-events-none">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                  <circle cx="9" cy="9" r="7" stroke="#999" strokeWidth="2"/>
-                  <line x1="15.0166" y1="15.4853" x2="18" y2="18" stroke="#999" strokeWidth="2" strokeLinecap="round"/>
-                </svg>
-              </span>
+              {/* Replace mobile search input with location select */}
+              <LocationSelect className="w-full" />
             </div>
           </nav>
         </div>
