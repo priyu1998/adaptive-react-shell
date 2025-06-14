@@ -50,7 +50,14 @@ export default function LocationPicker({ className }) {
           <span className="pl-1 text-xs text-muted-foreground">&#x25BE;</span>
         </button>
       </PopoverTrigger>
-      <PopoverContent className="w-64 p-3" align="center">
+      {/* Force downward appearance for popover with align center and side bottom */}
+      <PopoverContent 
+        className="w-64 p-3"
+        align="center"
+        side="bottom"
+        sideOffset={6}
+        style={{ zIndex: 1000 }}
+      >
         <div>
           <input
             type="text"

@@ -1,4 +1,3 @@
-
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import TestCard from "@/components/TestCard";
@@ -81,7 +80,8 @@ export default function Index() {
       <Header />
 
       {/* Main Content */}
-      <main className="flex-1 mx-auto w-full max-w-[1400px] px-2 sm:px-8 md:px-20 lg:px-32 pt-6">
+      {/* margins: xs=px-3, sm=px-6, md=px-14, lg=px-28, xl=px-40. maxW stays at 1400px */}
+      <main className="flex-1 mx-auto w-full max-w-[1400px] px-3 sm:px-6 md:px-14 lg:px-28 xl:px-40 pt-6">
         {/* Centered Search Bar */}
         <form
           className="flex flex-col items-center my-8"
