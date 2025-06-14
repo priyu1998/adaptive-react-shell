@@ -1,9 +1,7 @@
-
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import TestCard from "@/components/TestCard";
 import Container from "@/components/Container";
-import SearchBarWithFilters from "@/components/SearchBarWithFilters";
 import React from "react";
 import { Button } from "@/components/ui/button";
 
@@ -75,27 +73,34 @@ function Chip({ text, selected, onClick }) {
 }
 
 export default function Index() {
-  const [search, setSearch] = React.useState("");
-  const [selectedFilter, setSelectedFilter] = React.useState("All Tests");
-
   return (
     <div className="bg-background min-h-screen flex flex-col">
       <Header />
       <main className="flex-1">
-        <Container>
-          <SearchBarWithFilters
-            search={search}
-            setSearch={setSearch}
-            selectedFilter={selectedFilter}
-            setSelectedFilter={setSelectedFilter}
-          />
-
-          {/* Top Featured Tests */}
-          <div>
-            <div className="flex justify-between items-center mb-2 mt-2">
-              <h2 className="text-lg sm:text-xl md:text-2xl font-bold">Top Tests & Packages</h2>
+        {/* Hero section with filter chips */}
+        <div className="bg-muted/30 py-6 sm:py-8 md:py-10">
+          <Container>
+            <div className="flex flex-wrap gap-2 sm:gap-3 justify-center">
+              {["Blood Tests", "Imaging", "Packages", "All Tests"].map(filter => (
+                <button
+                  key={filter}
+                  className="rounded-full px-3 sm:px-4 py-1.5 text-xs sm:text-sm font-medium border bg-white hover:bg-[#1A94E5] hover:text-white hover:border-[#1A94E5] transition-colors"
+                  type="button"
+                >
+                  {filter}
+                </button>
+              ))}
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4 md:gap-6 mb-8 sm:mb-10">
+          </Container>
+        </div>
+
+        <Container>
+          {/* Top Featured Tests */}
+          <div className="py-6 sm:py-8">
+            <div className="flex justify-between items-center mb-4 sm:mb-6">
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold">Top Tests & Packages</h2>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
               {topTests.map((test) => (
                 <TestCard
                   key={test.title}
@@ -108,11 +113,11 @@ export default function Index() {
           </div>
 
           {/* Popular Tests */}
-          <div>
-            <div className="flex justify-between items-center mb-2 mt-6 sm:mt-8">
-              <h2 className="text-lg sm:text-xl md:text-2xl font-bold">Popular Tests</h2>
+          <div className="py-6 sm:py-8">
+            <div className="flex justify-between items-center mb-4 sm:mb-6">
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold">Popular Tests</h2>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4 md:gap-6 mb-8 sm:mb-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
               {popularTests.map((test) => (
                 <TestCard
                   key={test.title}
@@ -125,9 +130,9 @@ export default function Index() {
           </div>
 
           {/* Tests by City */}
-          <div className="mt-4 mb-2">
-            <h3 className="text-base sm:text-lg md:text-xl font-semibold mb-2">Tests by City</h3>
-            <div className="flex flex-wrap gap-1 sm:gap-2">
+          <div className="py-4 sm:py-6">
+            <h3 className="text-lg sm:text-xl md:text-2xl font-semibold mb-3 sm:mb-4">Tests by City</h3>
+            <div className="flex flex-wrap gap-2 sm:gap-3">
               {cityChips.map(c => (
                 <Chip key={c} text={c} />
               ))}
@@ -135,9 +140,9 @@ export default function Index() {
           </div>
 
           {/* Tests by Category */}
-          <div className="mt-4 sm:mt-6 mb-8 sm:mb-10">
-            <h3 className="text-base sm:text-lg md:text-xl font-semibold mb-2">Tests by Category</h3>
-            <div className="flex flex-wrap gap-1 sm:gap-2">
+          <div className="py-4 sm:py-6">
+            <h3 className="text-lg sm:text-xl md:text-2xl font-semibold mb-3 sm:mb-4">Tests by Category</h3>
+            <div className="flex flex-wrap gap-2 sm:gap-3">
               {categoryChips.map(c => (
                 <Chip key={c} text={c} />
               ))}
@@ -145,27 +150,27 @@ export default function Index() {
           </div>
 
           {/* Partner Section */}
-          <div className="w-full mt-10 sm:mt-14 flex flex-col items-center justify-center text-center py-8 sm:py-10">
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2">
+          <div className="w-full py-12 sm:py-16 flex flex-col items-center justify-center text-center">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4">
               Partner with HealthCheck
             </h2>
-            <p className="text-muted-foreground mb-4 max-w-xl text-sm sm:text-base px-4">
+            <p className="text-muted-foreground mb-6 max-w-2xl text-sm sm:text-base px-4">
               Expand your reach and grow your business by partnering with us.
             </p>
-            <Button className="px-6 sm:px-8 py-2 text-sm sm:text-base font-semibold">
+            <Button className="px-8 py-3 text-base font-semibold">
               Become a Partner
             </Button>
           </div>
           
           {/* Help Center Section */}
-          <div className="w-full mt-4 sm:mt-6 flex flex-col items-center justify-center text-center py-8 sm:py-10">
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2">
+          <div className="w-full py-12 sm:py-16 flex flex-col items-center justify-center text-center">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4">
               Learn More About Health Tests
             </h2>
-            <p className="text-muted-foreground mb-4 max-w-xl text-sm sm:text-base px-4">
+            <p className="text-muted-foreground mb-6 max-w-2xl text-sm sm:text-base px-4">
               Find answers to common questions about health tests and procedures.
             </p>
-            <Button variant="outline" className="px-6 sm:px-8 py-2 text-sm sm:text-base font-semibold">
+            <Button variant="outline" className="px-8 py-3 text-base font-semibold">
               Visit Our Help Center
             </Button>
           </div>
