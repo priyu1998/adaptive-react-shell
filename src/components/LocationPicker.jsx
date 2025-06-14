@@ -6,7 +6,6 @@ import {
   PopoverTrigger,
   PopoverContent,
 } from "@/components/ui/popover";
-import { ScrollArea } from "@/components/ui/scroll-area";
 
 // List of cities; can be replaced with a database in production.
 const cities = [
@@ -52,37 +51,14 @@ export default function LocationPicker({ className }) {
           <span className="pl-1 text-xs text-muted-foreground">&#x25BE;</span>
         </button>
       </PopoverTrigger>
+      {/* Always open popover below the trigger, centered; never flip/collide */}
       <PopoverContent
-        className={
-          "p-3 w-64 max-w-[95vw] sm:w-64 sm:max-w-xs " +
-          // On mobile, make dropdown use fixed positioning at left and stay on screen
-          "rounded-md shadow-lg bg-popover"
-        }
+        className="w-64 p-3"
         align="center"
         side="bottom"
         sideOffset={8}
         avoidCollisions={false}
-        style={{
-          zIndex: 1000,
-          // On small screens: take up max 75vh, fixed and pinned under button, no overflow
-          maxHeight: '75vh',
-          overflow: 'visible',
-          position: 'fixed',
-          left: '50%',
-          transform: 'translateX(-50%)',
-          top: 'unset',
-          // For larger screens, fallback to Radix default with maxHeight
-          ...(window.innerWidth >= 640
-            ? {}
-            : {
-                bottom: 0,
-                right: 0,
-                left: 0,
-                transform: 'none',
-                width: '100vw',
-                borderRadius: '20px 20px 0 0',
-              }),
-        }}
+        style={{ zIndex: 1000 }}
       >
         <div>
           <input
@@ -93,7 +69,7 @@ export default function LocationPicker({ className }) {
             className="w-full mb-2 px-3 py-2 rounded border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary transition"
             autoFocus
           />
-          <ScrollArea className="max-h-72 w-full">
+          <div className="max-h-40 overflow-auto">
             {filteredCities.length === 0 ? (
               <div className="text-xs text-muted-foreground text-center py-2">
                 No results found
@@ -110,12 +86,9 @@ export default function LocationPicker({ className }) {
                 </button>
               ))
             )}
-            {/* Add spacer for safe touch area at bottom on mobile */}
-            <div className="h-10 sm:h-0" />
-          </ScrollArea>
+          </div>
         </div>
       </PopoverContent>
     </Popover>
   );
 }
-
