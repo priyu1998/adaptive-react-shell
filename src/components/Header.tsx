@@ -36,7 +36,6 @@ export default function Header() {
               {item.name}
             </NavLink>
           ))}
-          {/* Spacer */}
           <div className="flex-1" />
           <div className="relative">
             <LocationSelect />
@@ -63,7 +62,7 @@ export default function Header() {
       {/* Mobile menu drawer */}
       {mobileOpen && (
         <div className="lg:hidden px-6 pb-4">
-          <nav className="space-y-2">
+          <nav className="space-y-2 flex flex-col items-center">
             {navItems.map((item) => (
               <NavLink
                 key={item.name}
@@ -82,9 +81,9 @@ export default function Header() {
                 Book a Test
               </Button>
             </div>
-            <div className="mt-2">
-              {/* Replace mobile search input with location select */}
-              <LocationSelect className="w-full" />
+            <div className="mt-4 flex justify-center w-full">
+              {/* Centered location select on mobile */}
+              <LocationSelect className="w-full max-w-xs mx-auto block" />
             </div>
           </nav>
         </div>
