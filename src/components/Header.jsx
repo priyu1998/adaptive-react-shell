@@ -17,7 +17,7 @@ export default function Header() {
 
   return (
     <header className="w-full bg-white shadow-sm sticky top-0 z-40">
-      <div className="mx-auto max-w-[1400px] flex items-center justify-between px-4 md:px-8 lg:px-12 py-4">
+      <div className="mx-auto max-w-[1600px] flex items-center justify-between px-4 sm:px-6 md:px-10 lg:px-16 py-4">
         {/* Logo */}
         <Link to="/" className="text-2xl font-bold tracking-tight text-black">
           HealthCheck

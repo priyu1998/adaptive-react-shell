@@ -9,7 +9,7 @@ const TestCard = ({ imgSrc, title, desc, className }) => {
         alt={title}
         className="h-40 w-full object-cover"
         loading="lazy"
-        />
+      />
       <div className="p-4 flex-1 flex flex-col">
         <div className="font-semibold text-base mb-1 truncate">{title}</div>
         <div className="text-sm text-muted-foreground flex-1">{desc}</div>

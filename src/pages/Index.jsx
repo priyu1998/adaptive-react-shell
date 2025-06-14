@@ -3,6 +3,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import TestCard from "@/components/TestCard";
 import { Button } from "@/components/ui/button";
+import React from "react";
 
 const topTests = [
   {
@@ -70,12 +71,29 @@ const Chip = ({ text, selected, onClick }) => (
 );
 
 export default function Index() {
+  // Optionally you can manage search state here if you connect it elsewhere
+  const [search, setSearch] = React.useState("");
+
   return (
     <div className="bg-background min-h-screen flex flex-col">
       <Header />
 
       {/* Main Content */}
-      <main className="flex-1 mx-auto w-full max-w-[1300px] px-4 md:px-8 lg:px-12 pt-6">
+      <main className="flex-1 mx-auto w-full max-w-[1300px] px-4 sm:px-8 md:px-16 lg:px-32 pt-6">
+        {/* Centered Search Bar */}
+        <form
+          className="flex justify-center items-center my-6"
+          onSubmit={e => { e.preventDefault(); }}
+        >
+          <input
+            className="w-full max-w-xl px-5 py-3 rounded-full border border-input shadow-sm focus:outline-none focus:ring-2 focus:ring-primary bg-white text-base transition"
+            type="search"
+            placeholder="Search for tests, packages or labs..."
+            value={search}
+            onChange={e => setSearch(e.target.value)}
+          />
+        </form>
+
         {/* Top Featured Tests */}
         <div>
           <div className="flex justify-between items-center mb-2 mt-2">
