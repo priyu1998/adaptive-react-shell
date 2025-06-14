@@ -41,6 +41,7 @@ export default function Header() {
         
         {/* Right section - desktop only */}
         <div className="hidden lg:flex items-center gap-3">
+          <LocationPicker />
           <Button variant="outline" className="px-4 h-9 text-sm">
             For Labs
           </Button>
@@ -49,7 +50,7 @@ export default function Header() {
           </Button>
         </div>
         
-        {/* Mobile menu button */}
+        {/* Mobile menu button (hamburger) */}
         <button
           className="lg:hidden p-2 rounded-md hover:bg-accent"
           onClick={() => setMobileOpen(!mobileOpen)}
@@ -59,33 +60,12 @@ export default function Header() {
         </button>
       </div>
       
-      {/* Mobile menu drawer */}
+      {/* Mobile menu drawer (only on small screens) */}
       {mobileOpen && (
         <div className="lg:hidden px-4 pb-4 border-t">
-          {/* Mobile Search */}
-          <div className="mb-4">
-            <div className="flex items-center px-3 py-2 rounded-lg bg-muted">
-              {/* Search input for mobile only */}
-              <svg
-                className="text-muted-foreground mr-2 flex-shrink-0"
-                width={16}
-                height={16}
-                stroke="currentColor"
-                fill="none"
-                viewBox="0 0 24 24"
-              >
-                <circle cx={11} cy={11} r={8} />
-                <line x1={21} y1={21} x2={16.65} y2={16.65} />
-              </svg>
-              <input
-                className="flex-1 bg-transparent outline-none border-none text-sm"
-                type="search"
-                placeholder="Search"
-                aria-label="Search for tests, packages or labs"
-              />
-            </div>
+          <div className="mb-4 flex justify-end">
+            <LocationPicker />
           </div>
-          
           <nav className="space-y-2">
             {navItems.map((item) => (
               <NavLink
@@ -104,9 +84,6 @@ export default function Header() {
               <Button className="flex-1 h-10">
                 Book a Test
               </Button>
-            </div>
-            <div className="mt-3 flex justify-center">
-              <LocationPicker />
             </div>
           </nav>
         </div>

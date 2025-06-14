@@ -1,3 +1,4 @@
+
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import TestCard from "@/components/TestCard";
@@ -79,56 +80,60 @@ export default function Index() {
   return (
     <div className="bg-background min-h-screen flex flex-col">
       <Header />
+
       <main className="flex-1">
         {/* Main Hero + Search - centered and responsive */}
-        <div className="bg-muted/30 pt-6 pb-0 sm:pt-8 sm:pb-0 md:pt-12 md:pb-0">
+        <div className="bg-transparent pt-4 pb-0 sm:pt-8 sm:pb-0">
           <Container>
-            {/* Centered Search bar */}
-            <form
-              className="w-full max-w-3xl mx-auto flex flex-col items-center px-2"
-              onSubmit={e => e.preventDefault()}
-            >
-              <div className="flex items-center w-full px-2 sm:px-4 py-2 sm:py-3 rounded-lg bg-white shadow-sm border border-muted focus-within:ring-2 focus-within:ring-[#1A94E5] transition mb-4 sm:mb-6">
-                <svg
-                  className="text-muted-foreground mr-2 flex-shrink-0"
-                  width={20}
-                  height={20}
-                  stroke="currentColor"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                >
-                  <circle cx={11} cy={11} r={8} />
-                  <line x1={21} y1={21} x2={16.65} y2={16.65} />
-                </svg>
-                <input
-                  className="flex-1 bg-transparent outline-none border-none text-sm sm:text-base"
-                  type="search"
-                  placeholder="Search for tests, packages or labs"
-                  value={search}
-                  onChange={e => setSearch(e.target.value)}
-                  aria-label="Search for tests, packages or labs"
-                />
+            <div className="w-full flex flex-col items-center">
+              {/* Centered Search bar ABOVE tags */}
+              <form
+                className="w-full max-w-3xl mx-auto flex flex-col items-center"
+                onSubmit={e => e.preventDefault()}
+              >
+                <div className="flex items-center w-full px-2 sm:px-6 py-4 sm:py-6 rounded-2xl bg-white shadow-sm border border-muted focus-within:ring-2 focus-within:ring-[#1A94E5] transition mb-5 sm:mb-7"
+                  style={{ minHeight: 64 }}>
+                  <svg
+                    className="text-muted-foreground mr-3 flex-shrink-0"
+                    width={22}
+                    height={22}
+                    stroke="currentColor"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle cx={11} cy={11} r={8} />
+                    <line x1={21} y1={21} x2={16.65} y2={16.65} />
+                  </svg>
+                  <input
+                    className="flex-1 bg-transparent outline-none border-none text-lg sm:text-xl placeholder:text-muted-foreground"
+                    type="search"
+                    placeholder="Search for tests, labs, or packages"
+                    value={search}
+                    onChange={e => setSearch(e.target.value)}
+                    aria-label="Search for tests, packages or labs"
+                  />
+                </div>
+              </form>
+              {/* Filter Chips below search - center aligned */}
+              <div className="flex flex-wrap gap-3 justify-center mb-2 sm:mb-6">
+                {["Blood Tests", "Imaging", "Packages", "All Tests"].map(filter => (
+                  <button
+                    key={filter}
+                    className={
+                      "rounded-full px-5 sm:px-6 py-2 text-base font-medium border bg-[#f5f6fa] hover:bg-[#1A94E5] hover:text-white hover:border-[#1A94E5] transition-colors"
+                    }
+                    type="button"
+                    onClick={() => setSelectedFilter(filter)}
+                    style={{
+                      ...(selectedFilter === filter
+                        ? { backgroundColor: "#1A94E5", color: "#fff", borderColor: "#1A94E5" }
+                        : {})
+                    }}
+                  >
+                    {filter}
+                  </button>
+                ))}
               </div>
-            </form>
-            {/* Chips below search */}
-            <div className="flex flex-wrap gap-2 sm:gap-3 justify-center mb-2 sm:mb-4">
-              {["Blood Tests", "Imaging", "Packages", "All Tests"].map(filter => (
-                <button
-                  key={filter}
-                  className={
-                    "rounded-full px-3 sm:px-4 py-1.5 text-xs sm:text-sm font-medium border bg-white hover:bg-[#1A94E5] hover:text-white hover:border-[#1A94E5] transition-colors"
-                  }
-                  type="button"
-                  onClick={() => setSelectedFilter(filter)}
-                  style={{
-                    ...(selectedFilter === filter
-                      ? { backgroundColor: "#1A94E5", color: "#fff", borderColor: "#1A94E5" }
-                      : {})
-                  }}
-                >
-                  {filter}
-                </button>
-              ))}
             </div>
           </Container>
         </div>
@@ -136,17 +141,17 @@ export default function Index() {
         <Container>
           {/* Top Featured Tests */}
           <section className="py-6 sm:py-8 md:py-12">
-            <div className="flex justify-between items-center mb-4 sm:mb-6">
-              <h2 className="text-lg sm:text-xl md:text-2xl font-bold">Top Tests & Packages</h2>
+            <div className="flex justify-between items-center mb-5 sm:mb-7">
+              <h2 className="text-2xl md:text-3xl font-bold">Top Tests &amp; Packages</h2>
             </div>
-            <div className="flex gap-4 sm:gap-6 overflow-x-auto pb-2 scrollbar-hide px-1 sm:px-0">
+            <div className="flex gap-5 sm:gap-6 overflow-x-auto pb-2 scrollbar-hide px-1 sm:px-0">
               {topTests.map((test) => (
                 <TestCard
                   key={test.title}
                   imgSrc={test.imgSrc}
                   title={test.title}
                   desc={test.desc}
-                  className="flex-shrink-0 w-60 sm:w-72 md:w-80"
+                  className="flex-shrink-0 w-64 sm:w-80 md:w-96"
                 />
               ))}
             </div>
@@ -154,17 +159,17 @@ export default function Index() {
 
           {/* Popular Tests */}
           <section className="py-6 sm:py-8 md:py-12">
-            <div className="flex justify-between items-center mb-4 sm:mb-6">
-              <h2 className="text-lg sm:text-xl md:text-2xl font-bold">Popular Tests</h2>
+            <div className="flex justify-between items-center mb-5 sm:mb-7">
+              <h2 className="text-2xl md:text-3xl font-bold">Popular Tests</h2>
             </div>
-            <div className="flex gap-4 sm:gap-6 overflow-x-auto pb-2 scrollbar-hide px-1 sm:px-0">
+            <div className="flex gap-5 sm:gap-6 overflow-x-auto pb-2 scrollbar-hide px-1 sm:px-0">
               {popularTests.map((test) => (
                 <TestCard
                   key={test.title}
                   imgSrc={test.imgSrc}
                   title={test.title}
                   desc={test.desc}
-                  className="flex-shrink-0 w-60 sm:w-72 md:w-80"
+                  className="flex-shrink-0 w-64 sm:w-80 md:w-96"
                 />
               ))}
             </div>
@@ -172,7 +177,7 @@ export default function Index() {
 
           {/* Tests by City */}
           <section className="py-4 sm:py-5 md:py-8">
-            <h3 className="text-base sm:text-lg md:text-xl font-semibold mb-3 sm:mb-4">
+            <h3 className="text-lg md:text-xl font-semibold mb-3 sm:mb-4">
               Tests by City
             </h3>
             <div className="flex flex-wrap gap-2 sm:gap-3">
@@ -184,7 +189,7 @@ export default function Index() {
 
           {/* Tests by Category */}
           <section className="py-4 sm:py-5 md:py-8">
-            <h3 className="text-base sm:text-lg md:text-xl font-semibold mb-3 sm:mb-4">
+            <h3 className="text-lg md:text-xl font-semibold mb-3 sm:mb-4">
               Tests by Category
             </h3>
             <div className="flex flex-wrap gap-2 sm:gap-3">
@@ -196,26 +201,26 @@ export default function Index() {
 
           {/* Partner Section */}
           <section className="w-full py-8 sm:py-12 flex flex-col items-center justify-center text-center">
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2 sm:mb-3">
+            <h2 className="text-2xl md:text-3xl font-bold mb-2 sm:mb-3">
               Partner with HealthCheck
             </h2>
-            <p className="text-muted-foreground mb-4 sm:mb-6 max-w-2xl text-sm sm:text-base px-4">
+            <p className="text-muted-foreground mb-4 sm:mb-6 max-w-2xl text-base px-4">
               Expand your reach and grow your business by partnering with us.
             </p>
-            <Button className="px-6 sm:px-8 py-2 sm:py-3 text-sm sm:text-base font-semibold">
+            <Button className="px-8 sm:px-12 py-2 sm:py-3 text-base font-semibold">
               Become a Partner
             </Button>
           </section>
           
           {/* Help Center Section */}
           <section className="w-full py-8 sm:py-12 flex flex-col items-center justify-center text-center">
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2 sm:mb-3">
+            <h2 className="text-2xl md:text-3xl font-bold mb-2 sm:mb-3">
               Learn More About Health Tests
             </h2>
-            <p className="text-muted-foreground mb-4 sm:mb-6 max-w-2xl text-sm sm:text-base px-4">
+            <p className="text-muted-foreground mb-4 sm:mb-6 max-w-2xl text-base px-4">
               Find answers to common questions about health tests and procedures.
             </p>
-            <Button variant="outline" className="px-6 sm:px-8 py-2 sm:py-3 text-sm sm:text-base font-semibold">
+            <Button variant="outline" className="px-8 sm:px-12 py-2 sm:py-3 text-base font-semibold">
               Visit Our Help Center
             </Button>
           </section>
